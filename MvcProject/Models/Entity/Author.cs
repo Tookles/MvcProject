@@ -1,9 +1,9 @@
-﻿namespace MvcProject.Models
+﻿namespace MvcProject.Models.Entity
 {
     public class Author
     {
 
-        public int Id { get ; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 

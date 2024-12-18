@@ -1,4 +1,5 @@
-﻿using System.Text.Json; 
+﻿using System.Text.Json;
+using MvcProject.Models.Entity;
 
 namespace MvcProject.Models
 {

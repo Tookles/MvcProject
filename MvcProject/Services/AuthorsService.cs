@@ -1,4 +1,5 @@
-﻿using MvcProject.Models; 
+﻿using MvcProject.Models;
+using MvcProject.Models.Entity;
 
 namespace MvcProject.Services
 {
