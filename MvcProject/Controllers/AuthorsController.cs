@@ -23,5 +23,12 @@ namespace MvcProject.Controllers
             var returnAuthors = _authorService.GetAllAuthors(); 
             return Ok(returnAuthors);
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetAuthors(int id)
+        {
+            var returnAuthor = _authorService.GetAuthorById(id);
+            return Ok(returnAuthor);
+        }
     }
 }

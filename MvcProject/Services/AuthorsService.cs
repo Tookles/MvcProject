@@ -13,7 +13,10 @@ namespace MvcProject.Services
             _authorModel = authorModel;
         }
 
-
+        public Author GetAuthorById(int id)
+        {
+            return _authorModel.FetchAuthorById(id);
+        }
 
         public List<Author> GetAllAuthors()
         {
