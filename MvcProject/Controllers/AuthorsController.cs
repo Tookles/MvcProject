@@ -46,6 +46,11 @@ namespace MvcProject.Controllers
             return NoContent();
         }
 
+        [HttpGet("books/{id}")]
+        public IActionResult GetBooksByAuthor(int id)
+        {
+            return Ok(_authorService.GetBooksByAuthor(id));
+        }
 
 
     }

@@ -1,5 +1,8 @@
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using MvcProject.Controllers;
 using MvcProject.Models;
+using MvcProject.Repositories;
 using MvcProject.Services; 
 
 namespace MvcProject
@@ -10,9 +13,19 @@ namespace MvcProject
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddControllers();
+            string connectionString = builder.Configuration.GetConnectionString("DefaultConnection"); 
+
+            builder.Services.AddDbContext<MyDbContext>(options =>
+            options.UseSqlServer(connectionString));
+
+
             builder.Services.AddScoped<AuthorsService>();
-            builder.Services.AddScoped<AuthorsModel>(); 
+            builder.Services.AddScoped<AuthorsModel>();
+
+            builder.Services.AddScoped<BooksService>();
+            builder.Services.AddScoped<BooksModel>();
+
+            builder.Services.AddControllers();
 
 
             var app = builder.Build();

@@ -1,44 +1,50 @@
 ﻿using System.Text.Json;
+using Microsoft.EntityFrameworkCore;
 using MvcProject.Models.Entity;
+using MvcProject.Repositories;
 
 namespace MvcProject.Models
 {
     public class AuthorsModel
     {
-        public List<Author> FetchAuthors()
+        private MyDbContext _db;
+
+        public AuthorsModel(MyDbContext db)
         {
-            var jsonAuthors = File.ReadAllText("resources/Authors.json");
-            List<Author> authorList = JsonSerializer.Deserialize<List<Author>>(jsonAuthors); 
-            return authorList; 
+            _db = db; 
         }
 
-        public Author FetchAuthorById(int id)
+
+        public List<Author> FetchAuthors()
         {
-            var jsonAuthors = File.ReadAllText("resources/Authors.json");
-            List<Author> authorList = JsonSerializer.Deserialize<List<Author>>(jsonAuthors);
-            return authorList.FindAll(a => a.Id == id).First();
+            return _db.Authors.ToList(); 
+        }
+
+        public Author? FetchAuthorById(int id)
+        {
+            return _db.Authors.Where(x => x.Id == id).FirstOrDefault();
         }
 
         public void AddAuthor(Author author)
         {
-            var jsonAuthors = File.ReadAllText("resources/Authors.json");
-            List<Author> authorList = JsonSerializer.Deserialize<List<Author>>(jsonAuthors);
-            author.Id = authorList.Count + 1;
-            authorList.Add(author);
-            string json = JsonSerializer.Serialize<List<Author>>(authorList, new JsonSerializerOptions() { WriteIndented = true });
-            File.WriteAllText("Resources\\Authors.json", json);
+            _db.Authors.Add(author);
+            _db.SaveChanges(); 
         }
 
         public void DeleteAuthor(int id)
         {
-            var jsonAuthors = File.ReadAllText("resources/Authors.json");
-            List<Author> authorList = JsonSerializer.Deserialize<List<Author>>(jsonAuthors);
+            Author? authorToRemove = _db.Authors.Where(x => x.Id == id).FirstOrDefault();
+            
+            if (authorToRemove != null)
+            {
+                _db.Authors.Remove(authorToRemove);
+                _db.SaveChanges();
+            }
+        }
 
-            var authorToRemove = authorList.Where( x => x.Id == id).FirstOrDefault();   
-            authorList.Remove(authorToRemove);
-
-            string json = JsonSerializer.Serialize<List<Author>>(authorList, new JsonSerializerOptions() { WriteIndented = true });
-            File.WriteAllText("Resources\\Authors.json", json);
+        public List<Book> GetBooksByAuthor(int id)
+        {
+            return _db.Authors.Where(x => x.Id == id).Include(x => x.Books).Select(x => x.Books).First();
         }
 
 

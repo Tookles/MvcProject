@@ -68,25 +68,5 @@
     "Id": 15,
     "Name": "Marlon James",
     "Nationality": "American"
-  },
-  {
-    "Id": 0,
-    "Name": "Sylvia Plath",
-    "Nationality": "American"
-  },
-  {
-    "Id": 0,
-    "Name": "Kate Mosse",
-    "Nationality": "American"
-  },
-  {
-    "Id": 18,
-    "Name": "Dan Snow",
-    "Nationality": "American"
-  },
-  {
-    "Id": 19,
-    "Name": "John Steinback",
-    "Nationality": "American"
   }
 ]
