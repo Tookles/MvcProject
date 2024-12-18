@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MvcProject.Services;
+using MvcProject.Models.Entity;
 
 namespace MvcProject.Controllers
 {
@@ -29,6 +30,13 @@ namespace MvcProject.Controllers
         {
             var returnAuthor = _authorService.GetAuthorById(id);
             return Ok(returnAuthor);
+        }
+
+        [HttpPost]
+        public IActionResult AddAuthor(Author author)
+        {
+            _authorService.AddAuthor(author);
+            return StatusCode(201);
         }
     }
 }

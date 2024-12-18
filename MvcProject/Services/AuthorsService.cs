@@ -23,5 +23,10 @@ namespace MvcProject.Services
             return _authorModel.FetchAuthors(); 
         }
 
+        public void AddAuthor(Author author)
+        {
+            _authorModel.AddAuthor(author);   
+        }
+
     }
 }

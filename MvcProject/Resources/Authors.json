@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "Id": 1,
     "Name": "George Orwell",
@@ -48,5 +48,50 @@
     "Id": 10,
     "Name": "Haruki Murakami",
     "Nationality": "Japanese"
+  },
+  {
+    "Id": 11,
+    "Name": "Kurt Vonnegut",
+    "Nationality": "American"
+  },
+  {
+    "Id": 12,
+    "Name": "Emily Bronte",
+    "Nationality": "English"
+  },
+  {
+    "Id": 13,
+    "Name": "Raymond Chandler",
+    "Nationality": "American"
+  },
+  {
+    "Id": 14,
+    "Name": "Thomas Pynchon",
+    "Nationality": "American"
+  },
+  {
+    "Id": 15,
+    "Name": "Marlon James",
+    "Nationality": "American"
+  },
+  {
+    "Id": 0,
+    "Name": "Sylvia Plath",
+    "Nationality": "American"
+  },
+  {
+    "Id": 0,
+    "Name": "Kate Mosse",
+    "Nationality": "American"
+  },
+  {
+    "Id": 18,
+    "Name": "Dan Snow",
+    "Nationality": "American"
+  },
+  {
+    "Id": 19,
+    "Name": "John Steinback",
+    "Nationality": "American"
   }
 ]
