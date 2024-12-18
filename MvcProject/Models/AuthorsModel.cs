@@ -28,5 +28,19 @@ namespace MvcProject.Models
             string json = JsonSerializer.Serialize<List<Author>>(authorList, new JsonSerializerOptions() { WriteIndented = true });
             File.WriteAllText("Resources\\Authors.json", json);
         }
+
+        public void DeleteAuthor(int id)
+        {
+            var jsonAuthors = File.ReadAllText("resources/Authors.json");
+            List<Author> authorList = JsonSerializer.Deserialize<List<Author>>(jsonAuthors);
+
+            var authorToRemove = authorList.Where( x => x.Id == id).FirstOrDefault();   
+            authorList.Remove(authorToRemove);
+
+            string json = JsonSerializer.Serialize<List<Author>>(authorList, new JsonSerializerOptions() { WriteIndented = true });
+            File.WriteAllText("Resources\\Authors.json", json);
+        }
+
+
     }
 }

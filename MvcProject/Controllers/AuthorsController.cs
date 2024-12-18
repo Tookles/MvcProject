@@ -38,5 +38,15 @@ namespace MvcProject.Controllers
             _authorService.AddAuthor(author);
             return StatusCode(201);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteAuthor(int id)
+        {
+            _authorService.DeleteAuthor(id);
+            return NoContent();
+        }
+
+
+
     }
 }

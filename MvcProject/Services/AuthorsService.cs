@@ -28,5 +28,11 @@ namespace MvcProject.Services
             _authorModel.AddAuthor(author);   
         }
 
+        public void DeleteAuthor(int id)
+        {
+            _authorModel.DeleteAuthor(id);
+        }
+
+
     }
 }
